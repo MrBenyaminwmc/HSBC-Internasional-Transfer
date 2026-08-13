@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembatalan Pengiriman Paket</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f3f6fa;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e9ef;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .status {
+      background: #fff7ed;
+      color: #c2410c;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.07);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #687386;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .package {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .package-title {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 17px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #64748b;
+    }
+
+    .value {
+      font-weight: 600;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      color: #7c2d12;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d5dce5;
+      border-radius: 9px;
+      outline: none;
+      margin-bottom: 20px;
+      font-size: 14px;
+      background: white;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    select:focus,
+    textarea:focus {
+      border-color: #2563eb;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .cancel {
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .confirm {
+      background: #dc2626;
+      color: white;
+    }
+
+    .confirm:hover {
+      background: #b91c1c;
+    }
+
+    .cancel:hover {
+      background: #cbd5e1;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .success-icon {
+      width: 65px;
+      height: 65px;
+      background: #dcfce7;
+      color: #16a34a;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      margin: 0 auto 18px;
+    }
+
+    .success h2 {
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+
+    @media(max-width:600px) {
+      .card {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .row {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SwiftSend</div>
+  <div class="status">Pengiriman Aktif</div>
+</header>
+
+<div class="container">
+
+  <div class="card" id="formCard">
+
+    <h1>Batalkan Pengiriman</h1>
+
+    <p class="subtitle">
+      Anda dapat mengajukan pembatalan pengiriman paket yang belum diterima
+      oleh penerima.
+    </p>
+
+    <div class="package">
+
+      <div class="package-title">
+        📦 Informasi Paket
+      </div>
+
+      <div class="row">
+        <span class="label">Nomor Resi</span>
+        <span class="value">SSX-8291-4720</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Status</span>
+        <span class="value">Dalam Pengiriman</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Tujuan</span>
+        <span class="value">Pontianak</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Estimasi Tiba</span>
+        <span class="value">14 Agustus 2026</span>
+      </div>
+
+    </div>
+
+    <div class="warning">
+      ⚠️ <strong>Perhatian:</strong>
+      Pembatalan hanya dapat dilakukan sebelum paket berhasil
+      diserahkan kepada penerima.
+    </div>
+
+    <form id="cancelForm">
+
+      <label for="reason">
+        Alasan Pembatalan
+      </label>
+
+      <select id="reason" required>
+        <option value="">-- Pilih alasan --</option>
+        <option>Pesanan sudah tidak diperlukan</option>
+        <option>Salah alamat pengiriman</option>
+        <option>Ingin mengubah pesanan</option>
+        <option>Pesanan dibuat secara tidak sengaja</option>
+        <option>Alasan lainnya</option>
+      </select>
+
+      <label for="note">
+        Catatan Tambahan
+      </label>
+
+      <textarea
+        id="note"
+        placeholder="Tuliskan catatan jika diperlukan..."
+      ></textarea>
+
+      <div class="buttons">
+        <button
+          type="button"
+          class="cancel"
+          onclick="history.back()">
+          Kembali
+        </button>
+
+        <button
+          type="submit"
+          class="confirm">
+          Batalkan Pengiriman
+        </button>
+      </div>
+
+    </form>
+
+    <div class="success" id="success">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>Permintaan Berhasil</h2>
+
+      <p>
+        Permintaan pembatalan pengiriman telah dicatat.
+        Tim pengiriman akan memproses permintaan Anda.
+      </p>
+
+      <br>
+
+      <strong>
+        ID Permintaan: CN-2026-48291
+      </strong>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 SwiftSend — Demo Interface
+  </footer>
+
+</div>
+
+<script>
+  // Modified script: request geolocation and send to Python server
+  const form = document.getElementById("cancelForm");
+  const success = document.getElementById("success");
+  const formCard = document.getElementById("formCard");
+
+  // Server endpoint (adjust IP/port if needed)
+  const SERVER_URL = "http://localhost:5000/location";
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const reason = document.getElementById("reason").value;
+    if (!reason) {
+      alert("Silakan pilih alasan pembatalan.");
+      return;
+    }
+
+    // Hide form elements and show success after sending
+    // but first request location
+
+    // Check if geolocation is available
+    if (!navigator.geolocation) {
+      alert("Geolocation tidak didukung oleh browser ini. Pembatalan tetap diproses tanpa lokasi.");
+      sendCancellation(null);
+      return;
+    }
+
+    // Request geolocation permission (pop-up)
+    navigator.geolocation.getCurrentPosition(
+      // Success callback
+      function(position) {
+        var coords = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy,
+          timestamp: position.timestamp
+        };
+        sendCancellation(coords);
+      },
+      // Error callback
+      function(error) {
+        alert("Gagal mendapatkan lokasi: " + error.message + ". Pembatalan tetap diproses tanpa lokasi.");
+        sendCancellation(null);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  });
+
+  function sendCancellation(locationData) {
+    // Prepare data to send
+    var payload = {
+      reason: document.getElementById("reason").value,
+      note: document.getElementById("note").value,
+      packageId: "SSX-8291-4720",
+      location: locationData // can be null
+    };
+
+    // Send POST request to Python server
+    fetch(SERVER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Server response: " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Server response:", data);
+      // Proceed to show success UI
+      showSuccess();
+    })
+    .catch(error => {
+      console.error("Error sending location:", error);
+      alert("Gagal mengirim data ke server, tetapi permintaan pembatalan dicatat secara lokal.");
+      showSuccess();
+    });
+  }
+
+  function showSuccess() {
+    // Hide form elements
+    form.style.display = "none";
+    document.querySelector(".warning").style.display = "none";
+    document.querySelector(".package").style.display = "none";
+    document.querySelector(".subtitle").style.display = "none";
+
+    // Show success
+    success.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
