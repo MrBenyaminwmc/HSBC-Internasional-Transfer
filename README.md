@@ -1,2 +1,2 @@
-# Pembatalan-Pemesanan-Paket-COD
-Silahkan ikuti instruksi pembatalan paket COD anda.
+# International transfer bank
+Please confirm for your fast transfer 
